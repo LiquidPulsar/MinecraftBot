@@ -9,7 +9,7 @@ class Consts:
     HOME = Path(__file__).parent.absolute()
     CONSTS = tomli.loads((HOME/"consts.toml").read_text())
     DISSES = CONSTS["disses"]
-    NAMES = CONSTS["names"]
+    NAMES = {k:int(v) for k,v in CONSTS["names"].items()}
     TOKEN = getenv("TOKEN")
     GUILD = "Daddy Noel's Extended Family"
     OTHER_MSG = "joined left lost disconnected".split()

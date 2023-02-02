@@ -48,7 +48,7 @@ class Logger(commands.Cog):
         if typ == "Server thread/INFO": #sourcery skip
             if words[0] in Consts.NAMES:
                 if words[1] not in Consts.OTHER_MSG:
-                    target = self.bot.get_user(int(Consts.NAMES[words[0]]))
+                    target = self.bot.get_user(Consts.NAMES[words[0]])
                     await self.callout(f"{msg}\nLmao {target.mention}")
 
     def is_connected(self):
