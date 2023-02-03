@@ -151,4 +151,7 @@ async def func():  # (None,) -> Any
     @command(name="console", aliases=["c"])
     @has_any_role("Admin")
     async def console(self, ctx: Context, *, cmd: str) -> None:
-        subprocess.run(f"screen -r MinecraftServerScreen -X stuff '{cmd}\n'", shell=True)
+        execute(cmd)
+    
+def execute(cmd:str):
+    subprocess.run(f"screen -r MinecraftServerScreen -X stuff '{cmd}\n'", shell=True)

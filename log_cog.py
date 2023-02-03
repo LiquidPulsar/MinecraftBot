@@ -1,4 +1,6 @@
 from consts import *
+from random import choice
+from admin_cog import execute
 from os import getenv
 from disnake.ext import tasks, commands
 
@@ -49,7 +51,11 @@ class Logger(commands.Cog):
             if words[0] in Consts.NAMES:
                 if words[1] not in Consts.OTHER_MSG:
                     target = self.bot.get_user(Consts.NAMES[words[0]])
-                    await self.callout(f"{msg}\nLmao {target.mention}")
+                    diss = choice(Consts.DISSES+Consts.CONSTS["specific"].get())
+                    await self.callout(
+                        f"{target.mention} {' '.join(words[1:])}\n{diss}"
+                    )
+                    execute(f'/say {words[0]}: {diss}')
 
     def is_connected(self):
         return self.bot.get_guild(int(getenv("GUILD_ID"))) is not None
