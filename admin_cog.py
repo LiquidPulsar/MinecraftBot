@@ -154,4 +154,4 @@ async def func():  # (None,) -> Any
         execute(cmd)
     
 def execute(cmd:str):
-    subprocess.run(f"screen -r MinecraftServerScreen -X stuff '{cmd}\n'", shell=True)
+    subprocess.run(f"screen -r MinecraftServerScreen -X stuff '{cmd}'\n", shell=True)
