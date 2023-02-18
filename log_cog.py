@@ -23,7 +23,7 @@ class Logger(commands.Cog):
     @tasks.loop(seconds=6.0) #60.0
     @connected
     async def reader(self):
-        with open(Consts.HOME/"logs"/"latest.log") as f:
+        with open(Consts.HOME.parent/"logs"/"latest.log") as f:
             if self.latest is not None:
                 for line in f:
                     if line == self.latest: break
@@ -53,7 +53,7 @@ class Logger(commands.Cog):
             if words[0] in Consts.NAMES:
                 if words[1] not in Consts.OTHER_MSG:
                     target = self.bot.get_user(Consts.NAMES[words[0]])
-                    diss = choice(Consts.DISSES+Consts.CONSTS["specific"].get(words[0]))
+                    diss = choice(Consts.DISSES+Consts.CONSTS["specific"].get(words[0],[]))
                     await self.callout(
                         f"{target.mention} {' '.join(words[1:])}\n{diss}"
                     )
