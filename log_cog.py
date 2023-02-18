@@ -57,7 +57,7 @@ class Logger(commands.Cog):
                     await self.callout(
                         f"{target.mention} {' '.join(words[1:])}\n{diss}"
                     )
-                    execute(f'/say {words[0]}: {diss}')
+                    execute(f'/say {words[0]} {diss}')
 
     def is_connected(self):
         return self.bot.get_guild(int(getenv("GUILD_ID"))) is not None
