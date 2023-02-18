@@ -29,7 +29,9 @@ class Logger(commands.Cog):
                     if line == self.latest: break
             new = [*f]
 
-        if not new: return
+        if not new:
+            loguru.logger.debug("Nothing new in log")
+            return
         loguru.logger.debug(f"Found {len(new)} new lines, parsing")
 
         self.latest = new[-1]
@@ -51,7 +53,7 @@ class Logger(commands.Cog):
             if words[0] in Consts.NAMES:
                 if words[1] not in Consts.OTHER_MSG:
                     target = self.bot.get_user(Consts.NAMES[words[0]])
-                    diss = choice(Consts.DISSES+Consts.CONSTS["specific"].get())
+                    diss = choice(Consts.DISSES+Consts.CONSTS["specific"].get(words[0]))
                     await self.callout(
                         f"{target.mention} {' '.join(words[1:])}\n{diss}"
                     )

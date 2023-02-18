@@ -24,10 +24,8 @@ async def on_ready():
         f'{guild.name}(id: {guild.id})'
     )
 
-
-
-
 ####################
+
 client.add_cog(Internal(client))
 client.add_cog(Logger(client))
 client.run(Consts.TOKEN)
